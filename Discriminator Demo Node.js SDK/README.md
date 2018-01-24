@@ -91,7 +91,7 @@ The demo app will make calls to 2 endpoints. One returns response without discri
 
 I have worked on the ObjectMapper class and discriminator support, figuring out the SDK design & implementation details on my own (with advice from my co-workers).
 
-The documentation below has been automatically generated with the SDK, which I worked on for the JavaScript SDKs. If you want to see it in action, you can head on over to https://apimatic.io and generate an SDK by yourself. It requires an API description as input. You can use the one I've [built for this demo]()
+The documentation below has been automatically generated with the SDK, which I worked on for the JavaScript SDKs. If you want to see it in action, you can head on over to https://apimatic.io and generate an SDK by yourself. It requires an API description as input. You can use the one I've [built for this demo](https://github.com/mahamshahid18/discriminator-demo/blob/master/API%20description/discriminator-demo.json)
 
 
 ---------------------------------------------------------------------------------

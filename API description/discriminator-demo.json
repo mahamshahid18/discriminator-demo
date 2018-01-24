@@ -1,0 +1,295 @@
+{
+  "Name": "Discriminator Demo",
+  "BaseUri": "http://demo7422768.mockable.io/",
+  "ServerConfiguration": {
+    "DefaultEnvironment": "production",
+    "DefaultServer": "default",
+    "Environments": [
+      {
+        "Name": "production",
+        "Servers": [
+          {
+            "Name": "default",
+            "Url": "http://demo7422768.mockable.io/"
+          }
+        ]
+      }
+    ],
+    "Parameters": []
+  },
+  "ImageUri": "",
+  "Description": "A Mock API created for a demo of discriminator usage in automatically generated Node.js SDK.",
+  "Version": "1.0",
+  "AdditionalHeaders": [],
+  "Authentication": {
+    "Type": "None",
+    "AuthType": "None",
+    "Parameters": [],
+    "AuthGrantTypes": [],
+    "AuthScopes": [],
+    "Scopes": []
+  },
+  "Endpoints": [
+    {
+      "Name": "personWithDiscriminators",
+      "HTTPMethod": "GET",
+      "RequiresAuthentication": true,
+      "Route": "/personWithDiscriminators",
+      "Response": {
+        "Optional": false,
+        "Type": "Person",
+        "Constant": false,
+        "IsStream": false,
+        "IsAttribute": false,
+        "Attributes": {},
+        "IsArray": false,
+        "IsMap": false,
+        "Name": "response"
+      },
+      "HasOptionalQueryParams": false,
+      "HasOptionalFieldParams": false,
+      "CollectParameters": false,
+      "RequiredScopes": [],
+      "Parameters": [],
+      "Errors": [],
+      "TestCases": [],
+      "WrapBodyInObject": false
+    },
+    {
+      "Name": "person",
+      "HTTPMethod": "GET",
+      "RequiresAuthentication": true,
+      "Route": "/person",
+      "Response": {
+        "Optional": false,
+        "Type": "Person",
+        "Constant": false,
+        "IsStream": false,
+        "IsAttribute": false,
+        "Attributes": {},
+        "IsArray": false,
+        "IsMap": false,
+        "Name": "response"
+      },
+      "HasOptionalQueryParams": false,
+      "HasOptionalFieldParams": false,
+      "CollectParameters": false,
+      "RequiredScopes": [],
+      "Parameters": [],
+      "Errors": [],
+      "TestCases": [],
+      "WrapBodyInObject": false
+    }
+  ],
+  "CustomTypes": [
+    {
+      "Name": "Employee",
+      "BaseType": "Person",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "department",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "Person",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": true,
+          "IsMap": false,
+          "Name": "dependents",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "Number",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "salary",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": true,
+          "Type": "Person",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "boss",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ],
+      "DiscriminatorValue": "Empl"
+    },
+    {
+      "Name": "Boss",
+      "BaseType": "Employee",
+      "ImplementationType": "Structure",
+      "Description": "Testing circular reference.",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "DateTime",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {
+            "Format": "UnixTimestamp"
+          },
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "promotedAt",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": true,
+          "Type": "Employee",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "assistant",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ],
+      "DiscriminatorValue": "Boss"
+    },
+    {
+      "Name": "Person",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "address",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "Long",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "age",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "Date",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "birthday",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "name",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ],
+      "Discriminator": "personType",
+      "DiscriminatorValue": "Per"
+    }
+  ],
+  "CodeGenSettings": {
+    "SynchronyMode": 0,
+    "ModelSerializationScheme": "Json",
+    "ArraySerialization": "Indexed",
+    "Nullify404": false,
+    "UseHttpMethodPrefix": true,
+    "UseModelPrefix": false,
+    "UseExceptionPrefix": true,
+    "UseEnumPrefix": true,
+    "UseControllerPrefix": true,
+    "UseConstructorsForConfig": false,
+    "Timeout": 0.0,
+    "AndroidUseAppManifest": false,
+    "iOSUseAppInfoPlist": false,
+    "iOSGenerateCoreData": false,
+    "CollapseParamsToArray": false,
+    "RunscopeEnabled": false,
+    "AndroidHttpClient": "UNIREST",
+    "ObjCHttpClient": "UNIREST",
+    "CSharpHttpClient": "UNIREST",
+    "NodeHttpClient": "NODE_REQUEST",
+    "JavaUsePropertiesConfig": false,
+    "PHPHttpClient": "UNIREST",
+    "EnablePHPComposerVersionString": false,
+    "EnableAdditionalModelProperties": false,
+    "PreserveParameterOrder": true,
+    "ValidateRequiredParameters": false,
+    "AppendContentHeaders": true,
+    "GenerateInterfaces": false,
+    "UseCommonSDKLibrary": false,
+    "ParameterArrayFormat": 2,
+    "SecurityProtocols": [
+      "Ssl3",
+      "Tls"
+    ],
+    "GenerateTravisConfig": false,
+    "GenerateCircleConfig": false,
+    "GenerateAppveyorConfig": false,
+    "GenerateJenkinsConfig": false,
+    "EnableLogging": false,
+    "EnableHttpCache": false,
+    "Retries": 0,
+    "RetryInterval": 1.0,
+    "GenerateAdvancedDocs": true,
+    "StoreTimezoneInformation": false
+  },
+  "Errors": [],
+  "TestGenSettings": {
+    "Configuration": {},
+    "TestTimeout": 30,
+    "PrecisionDelta": 0.01
+  }
+}

@@ -1,0 +1,1 @@
+Please see [Discriminator Demo Node.js SDK](https://github.com/mahamshahid18/discriminator-demo/tree/master/Discriminator%20Demo%20Node.js%20SDK) for details

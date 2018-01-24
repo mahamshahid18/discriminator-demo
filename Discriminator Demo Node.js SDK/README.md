@@ -6,7 +6,7 @@ This SDK has been generated through APIMatic's automatic code generation engine.
 
 To understand the concept of discriminators, please note the structure of the SDK.
 
-![Structure](https://ibb.co/dLKeBw)
+![Structure](https://image.ibb.co/dxAmrw/structure.png)
 
 The Models/CustomTypes present in an SDK are kind of helper datatypes that responses from the server can be deserialized into. Just like classes, CustomTypes can have inheritance relationship as well.  
 
@@ -66,15 +66,15 @@ In this case, the JSON object is specified to be of `Employee` type (*Empl* is t
 
 ## Discriminator Handling in SDK
 
-For implementation purposes, you can take a look at [Person.js]() Model class. It has a `discriminatorMap` function, which is inherited by all the child classes as well. It returns a mapping of discriminator identifier to CustomType name.
+For implementation purposes, you can take a look at [Person.js](https://github.com/mahamshahid18/discriminator-demo/blob/master/Discriminator%20Demo%20Node.js%20SDK/lib/Models/Person.js) Model class. It has a `discriminatorMap` function, which is inherited by all the child classes as well. It returns a mapping of discriminator identifier to CustomType name.
 This mapping used by the mapping function to figure out which model class has to be instantiated.
-Next, you can take a look at the [ObjectMapper]() class. The purpose of this class is to map the JSON response fields (from the server) with the fields of the CustomType that is instantiated. It does this on the fly, first instantiating a CustomType and then going through all the fields of the JSON response, simultaneously matching them to the field names in the CustomType object and hence, populating the CustomType fields with their correct values (as returned by the server) [this is being done by the `mapFields` method]
+Next, you can take a look at the [ObjectMapper](https://github.com/mahamshahid18/discriminator-demo/blob/master/Discriminator%20Demo%20Node.js%20SDK/lib/ObjectMapper.js) class. The purpose of this class is to map the JSON response fields (from the server) with the fields of the CustomType that is instantiated. It does this on the fly, first instantiating a CustomType and then going through all the fields of the JSON response, simultaneously matching them to the field names in the CustomType object and hence, populating the CustomType fields with their correct values (as returned by the server) [this is being done by the `mapFields` method]
 
 The `mapFields` method is called by the `mapObject` method, within the ObjectMapper class. The mapObject method is passed the JSON response to be mapped, and the name of the class to be instantiated. It however, first checks if there is a discriminator already present in the class (whose name is passed in). If there is a discriminator field present in the CustomType (`getDiscriminatorFieldName()`) and its value has been set in the JSON response (`getDiscriminatorFieldValue()`), then the correct class is instantiated according to the discriminator value. If however, no discriminator is set, the default behavior occurs, and the default class is instantiated (whose name was passed in initally).
 
 After this, the `mapFields` method iterates the fields of the newly instantiated model class (which have empty values by default) and populates their values with JSON response sent by server.
 
-To briefly see how `mapObject` is called, you can take a look at [APIController.js](), line no `56`. Please note that the `ObjectMapper` class is not exposed through the client to be used by the devs. It is for internal working of the SDK only.
+To briefly see how `mapObject` is called, you can take a look at [APIController.js](https://github.com/mahamshahid18/discriminator-demo/blob/master/Discriminator%20Demo%20Node.js%20SDK/lib/Controllers/APIController.js), line no `56`. Please note that the `ObjectMapper` class is not exposed through the client to be used by the devs. It is for internal working of the SDK only.
 
 ## Demo
 
@@ -93,7 +93,10 @@ I have worked on the ObjectMapper class and discriminator support, figuring out 
 
 The documentation below has been automatically generated with the SDK, which I worked on for the JavaScript SDKs. If you want to see it in action, you can head on over to https://apimatic.io and generate an SDK by yourself. It requires an API description as input. You can use the one I've [built for this demo]()
 
-==========================================================================================
+
+---------------------------------------------------------------------------------
+
+
 
 
 # Getting Started with Discriminator Demo

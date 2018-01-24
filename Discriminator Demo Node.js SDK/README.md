@@ -66,8 +66,8 @@ In this case, the JSON object is specified to be of `Employee` type (*Empl* is t
 
 ## Discriminator Handling in SDK
 
-For implementation purposes, you can take a look at [Person.js](https://github.com/mahamshahid18/discriminator-demo/blob/master/Discriminator%20Demo%20Node.js%20SDK/lib/Models/Person.js) Model class. It has a `discriminatorMap` function, which is inherited by all the child classes as well. It returns a mapping of discriminator identifier to CustomType name.
-This mapping used by the mapping function to figure out which model class has to be instantiated.
+For implementation purposes, you can take a look at [Person.js](https://github.com/mahamshahid18/discriminator-demo/blob/master/Discriminator%20Demo%20Node.js%20SDK/lib/Models/Person.js) Model class. It has a `discriminatorMap` function, which is inherited by all the child classes as well. It returns a mapping of discriminator identifier to CustomType name. This mapping is used by the mapping function to figure out which model class has to be instantiated.
+
 Next, you can take a look at the [ObjectMapper](https://github.com/mahamshahid18/discriminator-demo/blob/master/Discriminator%20Demo%20Node.js%20SDK/lib/ObjectMapper.js) class. The purpose of this class is to map the JSON response fields (from the server) with the fields of the CustomType that is instantiated. It does this on the fly, first instantiating a CustomType and then going through all the fields of the JSON response, simultaneously matching them to the field names in the CustomType object and hence, populating the CustomType fields with their correct values (as returned by the server) [this is being done by the `mapFields` method]
 
 The `mapFields` method is called by the `mapObject` method, within the ObjectMapper class. The mapObject method is passed the JSON response to be mapped, and the name of the class to be instantiated. It however, first checks if there is a discriminator already present in the class (whose name is passed in). If there is a discriminator field present in the CustomType (`getDiscriminatorFieldName()`) and its value has been set in the JSON response (`getDiscriminatorFieldValue()`), then the correct class is instantiated according to the discriminator value. If however, no discriminator is set, the default behavior occurs, and the default class is instantiated (whose name was passed in initally).
@@ -84,7 +84,7 @@ To see a demo of this:
 * Run `npm install` to install dependencies
 * Run `node index` to run the demo app
 
-The demo app will make calls to 2 endpoints. One returns response without discriminator values (`/person`). The other sends response with discriminator values (`/personWithDiscriminator`). You can see the difference in the serialized responses to get an idea of how the 2 have been manipulated.
+The demo app will make calls to 2 endpoints. One returns response without discriminator values (`/person`). The other sends response with discriminator values (`/personWithDiscriminator`). You can see the difference in the deserialized responses to get an idea of how the 2 have been manipulated.
 
 
 ## My Contribution
